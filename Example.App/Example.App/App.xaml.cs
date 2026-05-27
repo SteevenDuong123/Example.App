@@ -24,9 +24,8 @@ namespace Example.App
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<Modules.ModuleName.ModuleC>();
-            moduleCatalog.AddModule<Modules.ModuleName.ModuleC>();
-            
+            //moduleCatalog.AddModule<ModuleNameModule>();
+            //moduleCatalog.AddModule<ModuleCustomersModule>();
         }
     }
 }

@@ -4,35 +4,16 @@ namespace Example.App.Model
 {
     public class Product : BindableBase
     {
-        private string productName;
-        public string ProductName
-        {
-            get { return productName; }
-            set { SetProperty(ref productName, value); }
-        }
-        private decimal unitPrice;
-        public decimal UnitPrice
-        {
-            get { return unitPrice; }
-            set { SetProperty(ref unitPrice, value); }
-        }
-        private int quality;
-        public int Quality
-        {
-            get { return quality; }
-            set { SetProperty(ref quality, value); }
-        }
-        private bool status;
-        public bool Status
-        {
-            get { return status; }
-            set { SetProperty(ref status, value); }
-        }
-        private int code;
-        public int Code
-        {
-            get { return code; }
-            set { SetProperty(ref code, value); }
-        }
+        private string _code;
+        private string _name;
+        private decimal _unitPrice;
+        private int _quantity;
+        private bool _isActive = true;
+
+        public string Code { get => _code; set => SetProperty(ref _code, value); }
+        public string Name { get => _name; set => SetProperty(ref _name, value); }
+        public decimal UnitPrice { get => _unitPrice; set => SetProperty(ref _unitPrice, value); }
+        public int Quantity { get => _quantity; set => SetProperty(ref _quantity, value); }
+        public bool IsActive { get => _isActive; set => SetProperty(ref _isActive, value); }
     }
 }
