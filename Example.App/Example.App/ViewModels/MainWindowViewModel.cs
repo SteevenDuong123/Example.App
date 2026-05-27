@@ -44,6 +44,19 @@ namespace Example.App.ViewModels
             get => _selectedProduct;
             set => SetProperty(ref _selectedProduct, value);
         }
+        private bool _isActive;
+        public bool IsActive
+        {
+            get => _isActive;
+            set
+            {
+                if (SetProperty(ref _isActive, value))
+                {
+                    MessageBox.Show(
+                        $"Status: {(value ? "Active" : "Inactive")}");
+                }
+            }
+        }
 
         public ObservableCollection<Product> Products { get; private set; }
 
@@ -128,6 +141,7 @@ namespace Example.App.ViewModels
 
         private void UpdateData()
         {
+            MessageBox.Show(IsActive.ToString());
             if (Products.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu để cập nhật!",

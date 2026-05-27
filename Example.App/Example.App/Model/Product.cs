@@ -4,6 +4,7 @@ namespace Example.App.Model
 {
     public class Product : BindableBase
     {
+        //Chưa fix for database only demo
         private string _code;
         private string _name;
         private decimal _unitPrice;
