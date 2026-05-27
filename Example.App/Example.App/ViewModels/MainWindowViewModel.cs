@@ -91,7 +91,7 @@ namespace Example.App.ViewModels
 
         private void Search()
         {
-       
+
             MessageBox.Show("Tìm kiếm với:\n" +
                           $"Code: {ProductCode}\n" +
                           $"Name: {ProductName}\n" +
