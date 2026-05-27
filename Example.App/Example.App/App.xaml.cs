@@ -1,10 +1,9 @@
-﻿using System.Windows;
-using Example.App.Modules.ModuleName;
-using Example.App.Services;
+﻿using Example.App.Services;
 using Example.App.Services.Interfaces;
 using Example.App.Views;
 using Prism.Ioc;
 using Prism.Modularity;
+using System.Windows;
 
 namespace Example.App
 {
@@ -25,7 +24,9 @@ namespace Example.App
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<ModuleNameModule>();
+            moduleCatalog.AddModule<Modules.ModuleName.ModuleC>();
+            moduleCatalog.AddModule<Modules.ModuleName.ModuleC>();
+            
         }
     }
 }

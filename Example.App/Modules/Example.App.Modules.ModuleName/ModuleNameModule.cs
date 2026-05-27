@@ -6,11 +6,11 @@ using Prism.Regions;
 
 namespace Example.App.Modules.ModuleName
 {
-    public class ModuleNameModule : IModule
+    public class ModuleC : IModule
     {
         private readonly IRegionManager _regionManager;
 
-        public ModuleNameModule(IRegionManager regionManager)
+        public ModuleC(IRegionManager regionManager)
         {
             _regionManager = regionManager;
         }
