@@ -1,148 +1,255 @@
-﻿<Window x:Class="Example.App.Views.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
-        prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:core="clr-namespace:Example.App.Core;assembly=Example.App.Core"
-        Title="{Binding Title}" SizeToContent="WidthAndHeight" MinHeight="350" MinWidth="600"
-         xmlns:converters="clr-namespace:Example.App.Converters">
-    <Window.Resources>
-        <converters:BoolToStatusConverter x:Key="BoolToStatusConverter"/>
-    </Window.Resources>
-    <Grid Margin="10">
-        <Border BorderBrush="Black" BorderThickness="1" Margin="5" Background="#D6DEE8">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <!--Header-->
-                <Border Grid.Row="0" Background="#FFF0E6" Margin="0,0,0,10" Padding="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <WrapPanel Grid.Column ="0">
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                <TextBlock Text="Product Code" Margin="0,0,10,0" Width="100" Padding="10"/>
-                                <TextBox Text="{Binding ProductCode}" Width="200" Height="30"/>
+        xmlns:converters="clr-namespace:Example.App.Converters" xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="Example.App.Views.MainWindow"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" SizeToContent="WidthAndHeight" MinHeight="350" MinWidth="600" MaxWidth="800" MaxHeight="500"
+        >
+
+    <Grid Margin="20">
+        <Border BorderBrush="Black" BorderThickness="1" Background="#FFCEF4F4" Padding="5
+                ">
+            <Border>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Background="#FFFFEDE6" Margin="20" Padding="10" BorderThickness="1" BorderBrush="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <WrapPanel Grid.Column ="0">
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <TextBlock Text="Product Code" Margin="0,0,10,0" Width="100" FontFamily="Arial" VerticalAlignment="Bottom"/>
+                                    <TextBox Text="{Binding ProductCode}" TextAlignment="Right" Width="100" Height="25" FontFamily="Arial" VerticalContentAlignment="Bottom"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                    <TextBlock Text="Product Name" Margin="0,0,10,0" Width="100" FontFamily="Arial" VerticalAlignment="Bottom"/>
+                                    <TextBox Text="{Binding ProductName}" TextAlignment="Left" Width="200" Height="25" FontFamily="Arial" VerticalContentAlignment="Bottom"/>
+                                </StackPanel>
+                            </WrapPanel>
+                            <StackPanel Grid.Column ="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <CheckBox  
+                                          Content="Include Deleted" FlowDirection="RightToLeft"  
+                                          IsChecked="{Binding IncludeDeleted}" 
+                                          Margin="10,0,0,50" FontFamily="Arial" VerticalContentAlignment="Bottom"
+                                    />
+
+
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Product Name" Margin="0,0,10,0" Width="100" Padding="10"/>
-                                <TextBox Text="{Binding ProductName}" Width="200" Height="30"/>
+                            <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                <Button  
+                                    Content="SEARCH"
+                                    Command="{Binding CommandSearch}"                                       
+                                    Width="100"       
+                                    Height="40"         
+                                    FontWeight="SemiBold"  
+                                    Foreground="White"     
+                                    Cursor="Hand" Background="#156082" FontFamily="Arial" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" FontSize="16" Padding="0,0,0,0">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border" 
+                                                    Background="#156082"
+                                                    CornerRadius="5" 
+                                                    BorderBrush="Black"
+                                                    BorderThickness="2">
+                                                <ContentPresenter    HorizontalAlignment="Center" 
+                                                                     VerticalAlignment="Center"/>
+                                            </Border>
+
+                                            <ControlTemplate.Triggers>
+                                                <!-- Hover -->
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#357ABD"/>
+                                                </Trigger>
+
+                                                <!-- Pressed -->
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#2C6A9F"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
                             </StackPanel>
-                        </WrapPanel>
-                        <StackPanel Grid.Column ="1">
-                            <CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" 
-                                      Content="Include Deleted" FlowDirection="RightToLeft"  
-                                      IsChecked="{Binding IncludeDeleted}" 
-                                      Margin="0,0,0,50"/>
-                            <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Search" Command="{Binding CommandSearch}" Width="100" Height="30"/>
+                        </Grid>
+                    </Border>
+                    <!--Detail-->
+                    <DataGrid Grid.Row="1" x:Name="dgProducts" 
+                  ItemsSource="{Binding Products}"
+                  SelectedItem="{Binding SelectedProduct}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="True"
+                  CanUserDeleteRows="True"
+                  SelectionUnit="FullRow"
+                  Margin="20,20,20,20"
+                             GridLinesVisibility="All" 
+                              HorizontalGridLinesBrush="Gray"
+                              VerticalGridLinesBrush="Gray" FontFamily="Arial">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="#FF82D4A5"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Code" Binding="{Binding Code}" Width="*" IsReadOnly="False"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" IsReadOnly="False"/>
+                            <DataGridTextColumn Header="Unit Price" Binding="{Binding UnitPrice, StringFormat=N0}" Width="150" IsReadOnly="False"/>
+                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*" IsReadOnly="False"/>
+                            <DataGridTemplateColumn Header="Status" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ToggleButton IsChecked="{Binding IsActive}"
+                                  Width="45"
+                                  Height="22"
+                                  HorizontalAlignment="Center">
+                                            <ToggleButton.Template>
+                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+
+                                                    <Grid>
+
+
+                                                        <!--Background-->
+
+                                                        <Border x:Name="SwitchBackground"
+                                                    Width="45"
+                                                    Height="22"
+                                                    CornerRadius="11"
+                                                    Background="#D9D9D9"
+                                                    BorderBrush="#888"
+                                                    BorderThickness="1"/>
+
+                                                        <!--Circle-->
+
+                                                        <Ellipse x:Name="SwitchThumb"
+                                                     Width="16"
+                                                     Height="16"
+                                                     Fill="White"
+                                                     Stroke="#666"
+                                                     HorizontalAlignment="Left"
+                                                     Margin="3,0,0,0"/>
+                                                    </Grid>
+                                                    <ControlTemplate.Triggers>
+
+                                                        <!--ON-->
+
+                                                        <Trigger Property="IsChecked"
+                                                     Value="True">
+
+                                                            <Setter TargetName="SwitchBackground"
+                                                        Property="Background"
+                                                        Value="#0078D7"/>
+
+                                                            <Setter TargetName="SwitchThumb"
+                                                        Property="HorizontalAlignment"
+                                                        Value="Right"/>
+
+                                                            <Setter TargetName="SwitchThumb"
+                                                        Property="Margin"
+                                                        Value="0,0,3,0"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </ToggleButton.Template>
+                                        </ToggleButton>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!--Footer-->
+
+                    <Border Grid.Row="2" Padding="10">
+                        <StackPanel Orientation="Horizontal" Margin="10,0,0,0"
+                        HorizontalAlignment="Left">
+                            <Button Content="DELETE ROW"
+                        Command="{Binding DeleteRowCommand}"
+                        Width="150"
+                        Height="40"
+                        Margin="0,0,15,0"
+                        Background="#156082"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        FontSize="20"
+                        BorderBrush="#FF0E262F"
+                        BorderThickness="2">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="border" 
+                                                  Background="#156082"
+                                                  CornerRadius="5" 
+                                                  BorderThickness="2"
+                                                BorderBrush="Black"
+                                                >
+                                            <ContentPresenter    HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+
+                                        <ControlTemplate.Triggers>
+                                            <!-- Hover -->
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="#357ABD"/>
+                                            </Trigger>
+
+                                            <!-- Pressed -->
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="#2C6A9F"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button Content="UPDATE"
+                        Command="{Binding UpdateCommand}"
+                         Width="130"
+                         Height="40"
+                         Background="#156082"
+                         Foreground="White"
+                         FontWeight="Bold"
+                         FontSize="20"
+                         BorderBrush="#0D3F52"
+                         BorderThickness="2"
+                                    >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="border" 
+                                                  Background="#156082"
+                                                  CornerRadius="5" 
+                                                  BorderThickness="2"
+                                                  BorderBrush="Black">
+                                            <ContentPresenter    HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                                        </Border>
+
+                                        <ControlTemplate.Triggers>
+                                            <!-- Hover -->
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="#357ABD"/>
+                                            </Trigger>
+
+                                            <!-- Pressed -->
+                                            <Trigger Property="IsPressed" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="#2C6A9F"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
                         </StackPanel>
-                    </Grid>
-                </Border>
-
-                <!--Detail-->
-                <DataGrid Grid.Row="1" x:Name="dgProducts" 
-                          ItemsSource="{Binding Products}"
-                          SelectedItem="{Binding SelectedProduct}"
-                          AutoGenerateColumns="False"
-                          CanUserAddRows="True"
-                          CanUserDeleteRows="True"
-                          SelectionUnit="FullRow"
-                          Margin="0,0,0,10">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Code" Binding="{Binding Code}" Width="*" IsReadOnly="False"/>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" IsReadOnly="False"/>
-                        <DataGridTextColumn Header="Unit Price" Binding="{Binding UnitPrice, StringFormat=N0}" Width="150" IsReadOnly="False"/>
-                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*" IsReadOnly="False"/>
-                        <DataGridTemplateColumn Header="Status" Width="100">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <ToggleButton IsChecked="{Binding IsActive}"
-                                          Width="45"
-                                          Height="22"
-                                          HorizontalAlignment="Center">
-                                        <ToggleButton.Template>
-                                            <ControlTemplate TargetType="ToggleButton">
-
-                                                <Grid>
-
-                                                    <!-- Background -->
-                                                    <Border x:Name="SwitchBackground"
-                                                            Width="45"
-                                                            Height="22"
-                                                            CornerRadius="11"
-                                                            Background="#D9D9D9"
-                                                            BorderBrush="#888"
-                                                            BorderThickness="1"/>
-                                                    <!-- Circle -->
-                                                    <Ellipse x:Name="SwitchThumb"
-                                                             Width="16"
-                                                             Height="16"
-                                                             Fill="White"
-                                                             Stroke="#666"
-                                                             HorizontalAlignment="Left"
-                                                             Margin="3,0,0,0"/>
-                                                </Grid>
-                                                <ControlTemplate.Triggers>
-                                                    <!-- ON -->
-                                                    <Trigger Property="IsChecked"
-                                                             Value="True">
-
-                                                        <Setter TargetName="SwitchBackground"
-                                                                Property="Background"
-                                                                Value="#0078D7"/>
-
-                                                        <Setter TargetName="SwitchThumb"
-                                                                Property="HorizontalAlignment"
-                                                                Value="Right"/>
-
-                                                        <Setter TargetName="SwitchThumb"
-                                                                Property="Margin"
-                                                                Value="0,0,3,0"/>
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
-                                        </ToggleButton.Template>
-                                    </ToggleButton>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <!--Footer-->
-                <Border Grid.Row="2" Padding="10">
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Left">
-                        <Button Content="DELETE ROW"
-                                Command="{Binding DeleteRowCommand}"
-                                Width="150"
-                                Height="40"
-                                Margin="0,0,15,0"
-                                Background="#156082"
-                                Foreground="White"
-                                FontWeight="Bold"
-                                FontSize="20"
-                                BorderBrush="#0D3F52"
-                                BorderThickness="2"/>
-                        <Button Content="UPDATE"
-                                Command="{Binding UpdateCommand}"
-                                 Width="130"
-                                 Height="40"
-                                 Background="#156082"
-                                 Foreground="White"
-                                 FontWeight="Bold"
-                                 FontSize="20"
-                                 BorderBrush="#0D3F52"
-                                 BorderThickness="2"/>
-                    </StackPanel>
-                </Border>
-            </Grid>
+                    </Border>
+                </Grid>
+            </Border>
         </Border>
+
     </Grid>
-
-
 </Window>

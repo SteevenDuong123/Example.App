@@ -1,30 +1,35 @@
 ﻿using Example.App.Model;
+using Microsoft.EntityFrameworkCore.Query;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Example.App.ViewModels
 {
+    /// <summary>
+    /// This is class test denmo for example
+    /// </summary>
     public class MainWindowViewModel : BindableBase
     {
         #region Properties
 
-        private string _title = "Quản lý Sản phẩm";
+        private string _title = "Manager Production";
         public string Title
         {
             get => _title;
             set => SetProperty(ref _title, value);
         }
 
-        private string _productCode = "00001";
+        private string _productCode;
         public string ProductCode
         {
             get => _productCode;
             set => SetProperty(ref _productCode, value);
         }
 
-        private string _productName = "Product 1";
+        private string _productName;
         public string ProductName
         {
             get => _productName;
@@ -73,15 +78,28 @@ namespace Example.App.ViewModels
         public MainWindowViewModel()
         {
             Products = new ObservableCollection<Product>();
-
-            LoadSampleData();
-
             CommandSearch = new DelegateCommand(Search);
             DeleteRowCommand = new DelegateCommand(DeleteSelectedRow);
             UpdateCommand = new DelegateCommand(UpdateData);
+            Initializtion();
         }
+        private void DeleteSelectedRow(bool isCheck)
+        {
+            if (SelectedProduct != null && isCheck)
+            {
 
-        private void LoadSampleData()
+            }
+            else
+            {
+                MessageBox.Show("Have a error");
+            }
+                 
+        }
+        private async Task LoadDataAsync()
+        {
+            Initializtion();
+        }
+        private void Initializtion()
         {
             Products.Add(new Product
             {
@@ -100,15 +118,52 @@ namespace Example.App.ViewModels
                 Quantity = 20,
                 IsActive = false
             });
+            Products.Add(new Product
+            {
+                Code = "00003",
+                Name = "Product 3",
+                UnitPrice = 20000000,
+                Quantity = 20,
+                IsActive = false
+            });
         }
+        private void LoadDataFromText()
+        {
+            try
+            {
 
-        private void Search()
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+            }
+        }
+        private void LoadDataFromDatabase()
+        {
+        }
+        private void LoadDataXml()
         {
 
+        }
+        private void Search()
+        {
+            if (string.IsNullOrWhiteSpace(ProductCode) && string.IsNullOrWhiteSpace(ProductName))
+            {
+                MessageBox.Show("Vui lòng nhập ít nhất một tiêu chí tìm kiếm (Code hoặc Name).",
+                                "Thông báo",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+                return;
+            }
             MessageBox.Show("Tìm kiếm với:\n" +
                           $"Code: {ProductCode}\n" +
                           $"Name: {ProductName}\n" +
-                          $"Include Deleted: {IncludeDeleted}", "Search");
+                          $"Include Deleted: {IncludeDeleted}","Thông Báo", MessageBoxButton.OK,MessageBoxImage.Information);   
         }
 
         private void DeleteSelectedRow()
@@ -141,7 +196,7 @@ namespace Example.App.ViewModels
 
         private void UpdateData()
         {
-            MessageBox.Show(IsActive.ToString());
+
             if (Products.Count == 0)
             {
                 MessageBox.Show("Không có dữ liệu để cập nhật!",
