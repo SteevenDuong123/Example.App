@@ -28,11 +28,11 @@
                             <WrapPanel Grid.Column ="0">
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                                     <TextBlock Text="Product Code" Margin="0,0,10,0" Width="100" FontFamily="Arial" VerticalAlignment="Bottom"/>
-                                    <TextBox Text="{Binding ProductCode}" TextAlignment="Right" Width="100" Height="25" FontFamily="Arial" VerticalContentAlignment="Bottom"/>
+                                    <TextBox Text="{Binding ProductCode}" TextAlignment="Right" Width="100" Height="25" FontFamily="Arial" VerticalContentAlignment="Bottom" BorderBrush="Black" BorderThickness="1"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                                     <TextBlock Text="Product Name" Margin="0,0,10,0" Width="100" FontFamily="Arial" VerticalAlignment="Bottom"/>
-                                    <TextBox Text="{Binding ProductName}" TextAlignment="Left" Width="200" Height="25" FontFamily="Arial" VerticalContentAlignment="Bottom"/>
+                                    <TextBox Text="{Binding ProductName}" TextAlignment="Left" Width="200" Height="25" FontFamily="Arial" VerticalContentAlignment="Bottom" BorderBrush="Black" BorderThickness="1"/>
                                 </StackPanel>
                             </WrapPanel>
                             <StackPanel Grid.Column ="1" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -49,7 +49,7 @@
                                     Content="SEARCH"
                                     Command="{Binding CommandSearch}"                                       
                                     Width="100"       
-                                    Height="40"         
+                                    Height="35"         
                                     FontWeight="SemiBold"  
                                     Foreground="White"     
                                     Cursor="Hand" Background="#156082" FontFamily="Arial" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" FontSize="16" Padding="0,0,0,0">
@@ -82,90 +82,89 @@
                         </Grid>
                     </Border>
                     <!--Detail-->
-                    <DataGrid Grid.Row="1" x:Name="dgProducts" 
-                  ItemsSource="{Binding Products}"
-                  SelectedItem="{Binding SelectedProduct}"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="True"
-                  CanUserDeleteRows="True"
-                  SelectionUnit="FullRow"
-                  Margin="20,20,20,20"
-                             GridLinesVisibility="All" 
-                              HorizontalGridLinesBrush="Gray"
-                              VerticalGridLinesBrush="Gray" FontFamily="Arial">
-                        <DataGrid.ColumnHeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="Background" Value="#FF82D4A5"/>
-                                <Setter Property="Foreground" Value="Black"/>
-                                <Setter Property="FontWeight" Value="Bold"/>
-                            </Style>
-                        </DataGrid.ColumnHeaderStyle>
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Code" Binding="{Binding Code}" Width="*" IsReadOnly="False"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" IsReadOnly="False"/>
-                            <DataGridTextColumn Header="Unit Price" Binding="{Binding UnitPrice, StringFormat=N0}" Width="150" IsReadOnly="False"/>
-                            <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*" IsReadOnly="False"/>
-                            <DataGridTemplateColumn Header="Status" Width="100">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <ToggleButton IsChecked="{Binding IsActive}"
-                                  Width="45"
-                                  Height="22"
-                                  HorizontalAlignment="Center">
-                                            <ToggleButton.Template>
-                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border  Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="20">
+                        <DataGrid x:Name="dgProducts" 
+          ItemsSource="{Binding Products}"
+          SelectedItem="{Binding SelectedProduct}"
+          AutoGenerateColumns="False"
+          CanUserAddRows="True"
+          CanUserDeleteRows="True"
+          SelectionUnit="FullRow"
+          
+          GridLinesVisibility="All" 
+          HorizontalGridLinesBrush="Gray"
+          VerticalGridLinesBrush="Gray" FontFamily="Arial" Background="#00000000">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Background" Value="#FF82D4A5"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Code" Binding="{Binding Code}" Width="*" IsReadOnly="False" FontFamily="Arial"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" IsReadOnly="False"/>
+                                <DataGridTextColumn Header="Unit Price" Binding="{Binding UnitPrice, StringFormat=N0}" Width="150" IsReadOnly="False"/>
+                                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*" IsReadOnly="False"/>
+                                <DataGridTemplateColumn Header="Status" Width="100">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ToggleButton IsChecked="{Binding IsActive}"
+                          Width="50"
+                          Height="25"
+                          HorizontalAlignment="Center">
+                                                <ToggleButton.Template>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <Grid>
+                                                            <!--Background-->
+                                                            <Border x:Name="SwitchBackground"
+                                Width="45"
+                                Height="22"
+                                CornerRadius="5"
+                                Background="#D9D9D9"
+                                BorderBrush="#888"
+                                BorderThickness="1"/>
 
-                                                    <Grid>
+                                                            <!--Circle-->
 
+                                                            <Ellipse x:Name="SwitchThumb"
+                                 Width="16"
+                                 Height="16"
+                                 Fill="White"
+                                 Stroke="#666"
+                                 HorizontalAlignment="Left"
+                                 Margin="3,0,0,0"/>
+                                                        </Grid>
+                                                        <ControlTemplate.Triggers>
 
-                                                        <!--Background-->
+                                                            <!--ON-->
 
-                                                        <Border x:Name="SwitchBackground"
-                                                    Width="45"
-                                                    Height="22"
-                                                    CornerRadius="11"
-                                                    Background="#D9D9D9"
-                                                    BorderBrush="#888"
-                                                    BorderThickness="1"/>
+                                                            <Trigger Property="IsChecked"
+                                 Value="True">
 
-                                                        <!--Circle-->
+                                                                <Setter TargetName="SwitchBackground"
+                                    Property="Background"
+                                    Value="#0078D7"/>
 
-                                                        <Ellipse x:Name="SwitchThumb"
-                                                     Width="16"
-                                                     Height="16"
-                                                     Fill="White"
-                                                     Stroke="#666"
-                                                     HorizontalAlignment="Left"
-                                                     Margin="3,0,0,0"/>
-                                                    </Grid>
-                                                    <ControlTemplate.Triggers>
+                                                                <Setter TargetName="SwitchThumb"
+                                    Property="HorizontalAlignment"
+                                    Value="Right"/>
 
-                                                        <!--ON-->
-
-                                                        <Trigger Property="IsChecked"
-                                                     Value="True">
-
-                                                            <Setter TargetName="SwitchBackground"
-                                                        Property="Background"
-                                                        Value="#0078D7"/>
-
-                                                            <Setter TargetName="SwitchThumb"
-                                                        Property="HorizontalAlignment"
-                                                        Value="Right"/>
-
-                                                            <Setter TargetName="SwitchThumb"
-                                                        Property="Margin"
-                                                        Value="0,0,3,0"/>
-                                                        </Trigger>
-                                                    </ControlTemplate.Triggers>
-                                                </ControlTemplate>
-                                            </ToggleButton.Template>
-                                        </ToggleButton>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                                                                <Setter TargetName="SwitchThumb"
+                                    Property="Margin"
+                                    Value="0,0,3,0"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </ToggleButton.Template>
+                                            </ToggleButton>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+                    
 
                     <!--Footer-->
 
@@ -175,7 +174,7 @@
                             <Button Content="DELETE ROW"
                         Command="{Binding DeleteRowCommand}"
                         Width="150"
-                        Height="40"
+                        Height="35"
                         Margin="0,0,15,0"
                         Background="#156082"
                         Foreground="White"
@@ -212,7 +211,7 @@
                             <Button Content="UPDATE"
                         Command="{Binding UpdateCommand}"
                          Width="130"
-                         Height="40"
+                         Height="35"
                          Background="#156082"
                          Foreground="White"
                          FontWeight="Bold"
