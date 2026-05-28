@@ -33,7 +33,7 @@ namespace Example.App.ViewModels
             set { SetProperty(ref _productName, value); ApplyFilter(); }
         }
 
-        private bool _includeDeleted = true; // Mặc định hiện tất cả
+        private bool _includeDeleted = false; 
         public bool IncludeDeleted
         {
             get => _includeDeleted;
@@ -156,7 +156,7 @@ namespace Example.App.ViewModels
                 using (var writer = new StreamWriter(_filePath))
                 {
                     writer.WriteLine("Code|Name|UnitPrice|Quantity|IsActive");
-                    foreach (var p in Products)   // Lưu từ danh sách gốc
+                    foreach (var p in Products)   
                     {
                         writer.WriteLine($"{p.Code}|{p.Name}|{p.UnitPrice}|{p.Quantity}|{p.IsActive}");
                     }
@@ -183,18 +183,16 @@ namespace Example.App.ViewModels
 
         private void UpdateData()
         {
-            // Đồng bộ FilteredProducts → Products (để lấy dữ liệu mới thêm/sửa)
+           
             SyncFilteredToProducts();
             SaveToTextFile();
-            MessageBox.Show("✅ Dữ liệu đã được lưu vào file thành công!", "Thành công");
+            MessageBox.Show("Dữ liệu đã được lưu vào file thành công!", "Thành công");
         }
 
-        /// <summary>
-        /// Đồng bộ dữ liệu từ FilteredProducts về Products
-        /// </summary>
+       
         private void SyncFilteredToProducts()
         {
-            // Xóa những item trong Products không còn trong FilteredProducts (nếu có filter)
+            
             var currentCodes = FilteredProducts.Select(p => p.Code).ToList();
 
             var itemsToRemove = Products.Where(p => !currentCodes.Contains(p.Code)).ToList();
@@ -203,7 +201,7 @@ namespace Example.App.ViewModels
                 Products.Remove(item);
             }
 
-            // Thêm những item mới từ FilteredProducts vào Products
+           
             foreach (var item in FilteredProducts)
             {
                 if (!Products.Any(p => p.Code == item.Code))
