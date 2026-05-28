@@ -5,7 +5,7 @@
         xmlns:core="clr-namespace:Example.App.Core;assembly=Example.App.Core"
         xmlns:converters="clr-namespace:Example.App.Converters" xmlns:av="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="av" x:Class="Example.App.Views.MainWindow"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" SizeToContent="WidthAndHeight" MinHeight="350" MinWidth="600" MaxWidth="800" MaxHeight="500"
+        Title="{Binding Title}" SizeToContent="WidthAndHeight" MaxWidth="1200" MaxHeight="600"
         >
 
     <Grid Margin="20">
@@ -27,11 +27,11 @@
                             </Grid.ColumnDefinitions>
                             <WrapPanel Grid.Column ="0">
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <TextBlock Text="Product Code" Margin="0,0,10,0" Width="100" FontFamily="Arial" VerticalAlignment="Bottom"/>
+                                    <TextBlock Text="Product Code" Margin="0,0,0,0" Width="100" FontFamily="Arial" VerticalAlignment="Bottom"/>
                                     <TextBox Text="{Binding ProductCode}" TextAlignment="Right" Width="100" Height="25" FontFamily="Arial" VerticalContentAlignment="Bottom" BorderBrush="Black" BorderThickness="1"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                                    <TextBlock Text="Product Name" Margin="0,0,10,0" Width="100" FontFamily="Arial" VerticalAlignment="Bottom"/>
+                                <StackPanel Orientation="Horizontal" Margin="10,0,0,10">
+                                    <TextBlock Text="Product Name" Margin="50,0,0,0" Width="100" FontFamily="Arial" VerticalAlignment="Bottom"/>
                                     <TextBox Text="{Binding ProductName}" TextAlignment="Left" Width="200" Height="25" FontFamily="Arial" VerticalContentAlignment="Bottom" BorderBrush="Black" BorderThickness="1"/>
                                 </StackPanel>
                             </WrapPanel>
@@ -80,7 +80,7 @@
                     </Border>
                     <!--Detail-->
                     <!--<Border  Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="20">-->
-                    <DataGrid Grid.Row="1" BorderBrush="Black" BorderThickness="1" HeadersVisibility="Column"
+                    <DataGrid Grid.Row="1" BorderBrush="Black" BorderThickness="1" HeadersVisibility="Column" Margin="20,0,20,0"
                             x:Name="dgProducts" 
                             SelectedItem="{Binding SelectedProduct}"
                             AutoGenerateColumns="False"
