@@ -11,5 +11,10 @@ namespace Example.App.Views
         {
             InitializeComponent();
         }
+
+        private void dgProducts_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

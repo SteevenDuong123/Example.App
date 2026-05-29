@@ -1,0 +1,275 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Common -->
+    <system:String x:Key="AppTitle">Code.App Sales Management</system:String>
+    <system:String x:Key="Login">Login</system:String>
+    <system:String x:Key="Username">Username</system:String>
+    <system:String x:Key="Password">Password</system:String>
+    <system:String x:Key="Logout">Logout</system:String>
+
+    <!-- Menu -->
+    <system:String x:Key="Dashboard">Dashboard</system:String>
+    <system:String x:Key="Customers">Customers</system:String>
+    <system:String x:Key="Products">Products</system:String>
+    <system:String x:Key="Orders">Orders</system:String>
+    <system:String x:Key="Inventory">Inventory</system:String>
+    <system:String x:Key="Employees">Employees</system:String>
+    <system:String x:Key="RevenueReport">Revenue Report</system:String>
+
+    <!-- Buttons -->
+    <system:String x:Key="AddNew">Add New</system:String>
+    <system:String x:Key="Edit">Edit</system:String>
+    <system:String x:Key="Delete">Delete</system:String>
+    <system:String x:Key="Save">Save</system:String>
+    <system:String x:Key="Cancel">Cancel</system:String>
+    <system:String x:Key="ExportExcel">Export Excel</system:String>
+
+    <!-- Messages -->
+    <system:String x:Key="ConfirmDelete">Are you sure you want to delete?</system:String>
+    <system:String x:Key="Success">Success</system:String>
+    <system:String x:Key="Error">Error</system:String>
+
+    <system:String x:Key="Language_Label">Ngôn ngữ / Language</system:String>
+    <system:String x:Key="Language_Vietnamese">Tiếng Việt</system:String>
+    <system:String x:Key="Language_English">English</system:String>
+
+    <!-- Status Bar -->
+    <system:String x:Key="Status_Label">Status</system:String>
+    <system:String x:Key="User_Label">User</system:String>
+
+
+    <!-- Dashboard -->
+    <system:String x:Key="Dashboard_Title">SYSTEM OVERVIEW</system:String>
+    <system:String x:Key="Customers_Label">Customers</system:String>
+    <system:String x:Key="Products_Label">Products</system:String>
+    <system:String x:Key="Orders_Label">Orders</system:String>
+    <system:String x:Key="TodayRevenue_Label">Today's Revenue</system:String>
+    <system:String x:Key="Revenue_7Days_Title">REVENUE LAST 7 DAYS</system:String>
+    <system:String x:Key="RecentOrders_Title">5 MOST RECENT ORDERS</system:String>
+
+    <!-- DataGrid Headers -->
+    <system:String x:Key="Order_ID_Header">ID</system:String>
+    <system:String x:Key="Order_Date_Header">Order Date</system:String>
+    <system:String x:Key="Customer_Header">Customer</system:String>
+    <system:String x:Key="TotalAmount_Header">Total Amount</system:String>
+    <!-- Customer Detail -->
+    <system:String x:Key="CustomerDetail_Title_Label">Customer Details</system:String>
+    <system:String x:Key="Customer_FullName_Label">Full Name *</system:String>
+    <system:String x:Key="Customer_Phone_Label">Phone</system:String>
+    <system:String x:Key="Customer_Email_Label">Email</system:String>
+    <system:String x:Key="Customer_Address_Label">Address</system:String>
+    <system:String x:Key="Save_Button">Save</system:String>
+    <system:String x:Key="Cancel_Button">Cancel</system:String>
+
+    <!-- Customers View -->
+    <system:String x:Key="AddNewCustomer_Button">Add New Customer</system:String>
+    <system:String x:Key="ExportExcel_Button">Export Excel</system:String>
+    <system:String x:Key="Search_Tooltip">Search by name, phone, email...</system:String>
+
+    <!-- DataGrid Headers -->
+    <system:String x:Key="Customer_ID_Header">ID</system:String>
+    <system:String x:Key="Customer_FullName_Header">Full Name</system:String>
+    <system:String x:Key="Customer_Phone_Header">Phone</system:String>
+    <system:String x:Key="Customer_Email_Header">Email</system:String>
+    <system:String x:Key="Customer_Address_Header">Address</system:String>
+    <system:String x:Key="Customer_CreatedDate_Header">Created Date</system:String>
+    <system:String x:Key="Actions_Header">Actions</system:String>
+
+    <!-- Buttons in DataGrid -->
+    <system:String x:Key="Edit_Button">Edit</system:String>
+    <system:String x:Key="Delete_Button">Delete</system:String>
+
+    <!-- Pagination -->
+    <system:String x:Key="Pagination_First">&lt;&lt; First</system:String>
+    <system:String x:Key="Pagination_Previous">&lt; Prev</system:String>
+    <system:String x:Key="Pagination_Next">Next &gt;</system:String>
+    <system:String x:Key="Pagination_Last">Last &gt;&gt;</system:String>
+    <system:String x:Key="PageSize_Label">Rows per page:</system:String>
+    <!-- Order Detail -->
+    <system:String x:Key="Order_Customer_Label">Customer *</system:String>
+    <system:String x:Key="Order_Date_Label">Order Date</system:String>
+    <system:String x:Key="Order_Notes_Label">Notes</system:String>
+    <system:String x:Key="Order_Details_Title">Order Details</system:String>
+
+    <!-- DataGrid Headers -->
+    <system:String x:Key="Order_Product_Header">Product</system:String>
+    <system:String x:Key="Order_Quantity_Header">Quantity</system:String>
+    <system:String x:Key="Order_UnitPrice_Header">Unit Price</system:String>
+    <system:String x:Key="Order_TotalPrice_Header">Total Price</system:String>
+
+    <!-- Tổng tiền -->
+    <system:String x:Key="Order_TotalAmount_Label">Total Amount</system:String>
+
+    <!-- Orders View -->
+    <system:String x:Key="AddNewOrder_Button">Add New Order</system:String>
+    
+
+    <!-- DataGrid Headers -->
+    <system:String x:Key="Order_TotalAmount_Header">Total Amount</system:String>
+    <system:String x:Key="Order_ProductCount_Header">Product Count</system:String>
+
+
+    <!-- Buttons in DataGrid -->
+
+    <system:String x:Key="Print_Button">Print</system:String>
+
+    <!-- Pagination (đã có từ trước) -->
+
+    <!-- Product Detail -->
+    <system:String x:Key="Product_Name_Label">Product Name *</system:String>
+    <system:String x:Key="Product_Code_Label">Product Code</system:String>
+    <system:String x:Key="Product_Description_Label">Description</system:String>
+    <system:String x:Key="Product_Price_Label">Price</system:String>
+    <system:String x:Key="Product_Quantity_Label">Quantity</system:String>
+    <system:String x:Key="Product_Unit_Label">Unit</system:String>
+
+    <!-- Products View -->
+    <system:String x:Key="AddNewProduct_Button">Add New Product</system:String>
+
+    <system:String x:Key="Product_Search_Tooltip">Search by name, product code...</system:String>
+
+    <!-- DataGrid Headers -->
+    <system:String x:Key="Product_ID_Header">ID</system:String>
+    <system:String x:Key="Product_Name_Header">Product Name</system:String>
+    <system:String x:Key="Product_Code_Header">Product Code</system:String>
+    <system:String x:Key="Product_Price_Header">Price</system:String>
+    <system:String x:Key="Product_Quantity_Header">Quantity</system:String>
+    <system:String x:Key="Product_Unit_Header">Unit</system:String>
+    <system:String x:Key="Product_CreatedDate_Header">Created Date</system:String>
+
+    <!-- Employee Detail -->
+    <system:String x:Key="Employee_FullName_Label">Full Name *</system:String>
+    <system:String x:Key="Employee_Phone_Label">Phone</system:String>
+    <system:String x:Key="Employee_Email_Label">Email</system:String>
+    <system:String x:Key="Employee_Address_Label">Address</system:String>
+    <system:String x:Key="Employee_DateOfBirth_Label">Date of Birth</system:String>
+    <system:String x:Key="Employee_HireDate_Label">Hire Date</system:String>
+    <system:String x:Key="Employee_Position_Label">Position</system:String>
+    <system:String x:Key="Employee_Salary_Label">Salary</system:String>
+    <system:String x:Key="Employee_Notes_Label">Notes</system:String>
+
+    <!-- Employees View -->
+    <system:String x:Key="AddNewEmployee_Button">Add New Employee</system:String>
+
+    <system:String x:Key="Employee_Search_Tooltip">Search by name, phone, email...</system:String>
+
+    <!-- DataGrid Headers -->
+    <system:String x:Key="Employee_ID_Header">ID</system:String>
+    <system:String x:Key="Employee_FullName_Header">Full Name</system:String>
+    <system:String x:Key="Employee_Phone_Header">Phone</system:String>
+    <system:String x:Key="Employee_Email_Header">Email</system:String>
+    <system:String x:Key="Employee_Position_Header">Position</system:String>
+    <system:String x:Key="Employee_Salary_Header">Salary</system:String>
+    <system:String x:Key="Employee_HireDate_Header">Hire Date</system:String>
+    <!-- Header / Application Title -->
+    <system:String x:Key="AppTitle_Header">Management Application </system:String>
+    <!-- Import Detail (New Import) -->
+    <system:String x:Key="Import_New_Title">NEW IMPORT</system:String>
+    <system:String x:Key="Import_Product_Label">Product *</system:String>
+    <system:String x:Key="Import_Quantity_Label">Import Quantity *</system:String>
+    <system:String x:Key="Import_Notes_Label">Notes</system:String>
+    <system:String x:Key="Import_Save_Button">Save Import</system:String>
+    <!-- Inventory View -->
+    <system:String x:Key="Inventory_AddNewImport_Button">New Import</system:String>
+
+    <!-- DataGrid Headers -->
+    <system:String x:Key="Inventory_ID_Header">ID</system:String>
+    <system:String x:Key="Inventory_Product_Header">Product</system:String>
+    <system:String x:Key="Inventory_Type_Header">Type</system:String>
+    <system:String x:Key="Inventory_Quantity_Header">Quantity</system:String>
+    <system:String x:Key="Inventory_TransactionDate_Header">Transaction Date</system:String>
+    <system:String x:Key="Inventory_Notes_Header">Notes</system:String>
+    <!-- Invoice / Invoice -->
+    <system:String x:Key="Company_Name">CODE COMPANY LIMITED</system:String>
+    <system:String x:Key="Company_Address">Address: 123 ABC Street, District 1, Ho Chi Minh City</system:String>
+    <system:String x:Key="Company_Phone">Phone: 0123 456 789</system:String>
+    <system:String x:Key="Company_Email">Email: info@code.com</system:String>
+
+    <system:String x:Key="Invoice_PrintDate_Label">Print Date</system:String>
+    <system:String x:Key="Invoice_Customer_Label">Customer:</system:String>
+    <system:String x:Key="Invoice_OrderDate_Label">Order Date:</system:String>
+
+    <!-- DataGrid Headers -->
+    <system:String x:Key="Invoice_STT_Header">No.</system:String>
+    <system:String x:Key="Invoice_ProductName_Header">Product Name</system:String>
+    <system:String x:Key="Invoice_Quantity_Header">Quantity</system:String>
+    <system:String x:Key="Invoice_UnitPrice_Header">Unit Price</system:String>
+    <system:String x:Key="Invoice_TotalPrice_Header">Total Price</system:String>
+
+    <!-- Tổng tiền + Lời cảm ơn -->
+    <system:String x:Key="Invoice_TotalAmount_Label">TOTAL AMOUNT</system:String>
+    <system:String x:Key="Invoice_ThankYou_Message">Thank you for your purchase!</system:String>
+    <!-- Login View -->
+    <system:String x:Key="Login_Title">Login to System</system:String>
+    <system:String x:Key="Login_Username_Label">Account</system:String>
+    <system:String x:Key="Login_Password_Label">Password</system:String>
+    <system:String x:Key="Login_Login_Button">Login</system:String>
+    <system:String x:Key="Login_Exit_Button">Exit</system:String>
+    <!-- Revenue Report View -->
+    <system:String x:Key="RevenueReport_Title">REVENUE REPORT</system:String>
+    <system:String x:Key="RevenueReport_FromDate_Label">From date:</system:String>
+    <system:String x:Key="RevenueReport_ToDate_Label">To date:</system:String>
+    <system:String x:Key="Filter_Button">Filter</system:String>
+
+
+    <!-- DataGrid Headers -->
+    <system:String x:Key="RevenueReport_OrderID_Header">Order ID</system:String>
+    <system:String x:Key="RevenueReport_OrderDate_Header">Order Date</system:String>
+    <system:String x:Key="RevenueReport_Customer_Header">Customer</system:String>
+    <system:String x:Key="RevenueReport_ProductCount_Header">Items</system:String>
+    <system:String x:Key="RevenueReport_TotalAmount_Header">Total Amount</system:String>
+
+    <!-- Tổng doanh thu -->
+    <system:String x:Key="RevenueReport_TotalRevenue_Label">TOTAL REVENUE:</system:String>
+    <system:String x:Key="Exit">Exit</system:String>
+    <system:String x:Key="Inventory_Column">Stock</system:String>
+    <!-- QR Payment View -->
+    <system:String x:Key="QRPayment_Title">QR CODE PAYMENT</system:String>
+    <system:String x:Key="QRPayment_ScanInstruction">Scan the QR code with your banking app to pay</system:String>
+    <system:String x:Key="QRPayment_Amount_Label">Amount</system:String>
+    <system:String x:Key="QRPayment_CopyAccount_Button">Copy Account No.</system:String>
+
+    <!-- QR Payment -->
+    <system:String x:Key="Order_Info_Label">Order</system:String>
+    <system:String x:Key="QR_BankName">Agribank</system:String>
+    <system:String x:Key="QR_AccountNumber">5913205156115</system:String>
+    <system:String x:Key="QR_AccountName">DUONG THI LIEN</system:String>
+    <system:String x:Key="QR_Amount_Label">Amount</system:String>
+    <system:String x:Key="QR_Content_Prefix">Payment for order</system:String>
+    <system:String x:Key="QR_CopySuccess_Message">Account number copied!</system:String>
+    <system:String x:Key="Success_Title">Success</system:String>
+    <system:String x:Key="Invoice_CompanyName">CODE APP COMPANY LIMITED</system:String>
+    <system:String x:Key="Invoice_CompanyAddress">Address: 123 ABC Street, District 1, Ho Chi Minh City</system:String>
+    <system:String x:Key="Invoice_CompanyPhone">Phone: 0123 456 789</system:String>
+    <system:String x:Key="Invoice_CompanyEmail">Email: info@code.com</system:String>
+
+    <system:String x:Key="Invoice_CustomerLabel">Customer:</system:String>
+    <system:String x:Key="Invoice_OrderDateLabel">Order Date:</system:String>
+
+    <system:String x:Key="Invoice_Column_STT">No.</system:String>
+    <system:String x:Key="Invoice_Column_Product">Product</system:String>
+    <system:String x:Key="Invoice_Column_Quantity">Qty</system:String>
+    <system:String x:Key="Invoice_Column_UnitPrice">Unit Price</system:String>
+    <system:String x:Key="Invoice_Column_TotalPrice">Total</system:String>
+
+    <system:String x:Key="Invoice_TotalAmount">TOTAL AMOUNT</system:String>
+
+    <system:String x:Key="Invoice_QRTitle">PAYMENT VIA QR CODE</system:String>
+    <system:String x:Key="Invoice_QRInstruction">Scan with banking app</system:String>
+
+    <system:String x:Key="Invoice_PrintButton">Print Invoice</system:String>
+    <system:String x:Key="Invoice_CloseButton">Close</system:String>
+
+    <system:String x:Key="Invoice_PrintDate">Print Date</system:String>
+    <system:String x:Key="Order_TotalQuantity_Header">Quantity</system:String>
+
+
+
+
+
+
+
+
+
+</ResourceDictionary>

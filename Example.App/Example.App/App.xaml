@@ -2,13 +2,18 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Example.App"
-             xmlns:prism="http://prismlibrary.com/"
-             xmlns:converters="clr-namespace:Example.App.Converters">
+             xmlns:prism="http://prismlibrary.com/">
     <prism:PrismApplication.Resources>
         <ResourceDictionary>
-            <converters:BoolToStatusConverter
-                x:Key="BoolToStatusConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="pack://application:,,,/Example.App.Modules.Infrastructure;component/Converters/Resources.xaml" />-->
+                <!--<ResourceDictionary Source="pack://application:,,,/Code.App.Modules.Infrastructure;component/Converters/StringResources.vi.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Code.App.Modules.Infrastructure;component/Converters/StringResources.en.xaml" />-->
+
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </prism:PrismApplication.Resources>
+
+
 
 </prism:PrismApplication>

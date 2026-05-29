@@ -33,7 +33,7 @@ namespace Example.App.ViewModels
             set { SetProperty(ref _productName, value); ApplyFilter(); }
         }
 
-        private bool _includeDeleted = false; 
+        private bool _includeDeleted = false;
         public bool IncludeDeleted
         {
             get => _includeDeleted;
@@ -47,10 +47,11 @@ namespace Example.App.ViewModels
             set => SetProperty(ref _selectedProduct, value);
         }
 
-        public ObservableCollection<Product> Products { get; private set; } = new ObservableCollection<Product>();
-        public ObservableCollection<Product> FilteredProducts { get; private set; } = new ObservableCollection<Product>();
+        public ObservableCollection<Product> Products { get; private set; } = [];
+        public ObservableCollection<Product> FilteredProducts { get; private set; } = [];
 
         private readonly string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Products.txt");
+
         #endregion
 
         #region Commands
@@ -64,7 +65,6 @@ namespace Example.App.ViewModels
             CommandSearch = new DelegateCommand(Search);
             DeleteRowCommand = new DelegateCommand(DeleteSelectedRow);
             UpdateCommand = new DelegateCommand(UpdateData);
-
             LoadDataFromTextFile();
         }
 
@@ -136,16 +136,16 @@ namespace Example.App.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi đọc file:\n{ex.Message}");
+                MessageBox.Show($"Lỗi đọc file:\n{ex.Message} + {ex.StackTrace}");
             }
         }
 
         private void CreateSampleDataFile()
         {
             var sample = @"Code|Name|UnitPrice|Quantity|IsActive
-00001|Product 1|10000000|10|True
-00002|Product 2|20000000|20|False
-00003|Product 3|15000000|15|True";
+                        00002|Product 2|20000000|20|False
+                        00001|Product 1|10000000|10|True
+                        00003|Product 3|15000000|15|True";
             File.WriteAllText(_filePath, sample);
         }
 
@@ -156,7 +156,7 @@ namespace Example.App.ViewModels
                 using (var writer = new StreamWriter(_filePath))
                 {
                     writer.WriteLine("Code|Name|UnitPrice|Quantity|IsActive");
-                    foreach (var p in Products)   
+                    foreach (var p in Products)
                     {
                         writer.WriteLine($"{p.Code}|{p.Name}|{p.UnitPrice}|{p.Quantity}|{p.IsActive}");
                     }
@@ -172,27 +172,40 @@ namespace Example.App.ViewModels
         #region Command Methods
         private void DeleteSelectedRow()
         {
-            if (SelectedProduct == null) return;
-
-            if (MessageBox.Show($"Xóa '{SelectedProduct.Name}'?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            try
             {
-                Products.Remove(SelectedProduct);
-                ApplyFilter();
+                if (SelectedProduct == null)
+                {
+                    MessageBox.Show("Vui lòng chọn một sản phẩm để xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                if (MessageBox.Show($"Xóa '{SelectedProduct.Name}'?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                {
+                    Products.Remove(SelectedProduct);
+                    ApplyFilter();
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Have a error for data with is {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);    
+            }
+           
         }
 
         private void UpdateData()
         {
-           
+
             SyncFilteredToProducts();
             SaveToTextFile();
-            MessageBox.Show("Dữ liệu đã được lưu vào file thành công!", "Thành công");
+            MessageBox.Show("Dữ liệu đã được lưu vào file thành công!", "Thành công", MessageBoxButton.YesNo, MessageBoxImage.Information);
         }
 
-       
+
         private void SyncFilteredToProducts()
         {
-            
+
             var currentCodes = FilteredProducts.Select(p => p.Code).ToList();
 
             var itemsToRemove = Products.Where(p => !currentCodes.Contains(p.Code)).ToList();
@@ -201,7 +214,7 @@ namespace Example.App.ViewModels
                 Products.Remove(item);
             }
 
-           
+
             foreach (var item in FilteredProducts)
             {
                 if (!Products.Any(p => p.Code == item.Code))
