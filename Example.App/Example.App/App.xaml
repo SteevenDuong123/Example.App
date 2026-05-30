@@ -6,8 +6,9 @@
     <prism:PrismApplication.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="\Resource\DataGridStyles.xaml"/>
-                <ResourceDictionary Source="\Resource\ValueConverters.xaml"/>
+                <ResourceDictionary Source="/Resource/DataGridStyles.xaml"/>
+                <ResourceDictionary Source="/Resource/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Resource/ValueConverters.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </prism:PrismApplication.Resources>

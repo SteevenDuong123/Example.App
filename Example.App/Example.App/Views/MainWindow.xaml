@@ -21,6 +21,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+                    <!--=====Hearder======-->
                     <Border Grid.Row="0" Background="#FFFFEDE6" Margin="20" Padding="10" BorderThickness="1" BorderBrush="Black">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -45,45 +46,14 @@
                                     Margin="10,0,0,50" FontFamily="Arial" VerticalContentAlignment="Bottom"/>
                             </StackPanel>
                             <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                                <Button  
-                                    Content="SEARCH"
-                                    Command="{Binding CommandSearch}"                                       
-                                    Width="100"       
-                                    Height="35"         
-                                    FontWeight="SemiBold"  
-                                    Foreground="White"     
-                                    Cursor="Hand" Background="#156082" FontFamily="Arial" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" FontSize="16" Padding="0,0,0,0">
-                                    <Button.Template>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border x:Name="border" 
-                                                    Background="#156082"
-                                                    CornerRadius="5" 
-                                                    BorderBrush="Black"
-                                                    BorderThickness="2">
-                                                <ContentPresenter    
-                                                    HorizontalAlignment="Center" 
-                                                       
-                                                    VerticalAlignment="Center"/>
-                                            </Border>
-
-                                            <ControlTemplate.Triggers>
-                                                <!-- Hover -->
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter TargetName="border" Property="Background" Value="#357ABD"/>
-                                                </Trigger>
-
-                                                <!-- Pressed -->
-                                                <Trigger Property="IsPressed" Value="True">
-                                                    <Setter TargetName="border" Property="Background" Value="#2C6A9F"/>
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </Button.Template>
-                                </Button>
+                                <Button Content="SEARCH"
+                                        Command="{Binding CommandSearch}"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        />
                             </StackPanel>
                         </Grid>
                     </Border>
-                    <!--Details-->
+                    <!--=====Detail======-->
                     <DataGrid Grid.Row="1"
                               Style="{StaticResource BaseDataGridStyle}"
                               x:Name="dgProducts"
@@ -145,97 +115,28 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <!--Footer-->
-
+                    <!--=====Footer======-->
                     <Border Grid.Row="2" Padding="10">
                         <StackPanel Orientation="Horizontal" Margin="10,0,0,0"
-                    HorizontalAlignment="Left">
+                                    HorizontalAlignment="Left">
                             <Button Content="DELETE ROW"
-                                    
-                                    Width="150"
-                                    Height="35"
-                                    Margin="0,0,15,0"
-                                    Background="#156082"
-                                    Foreground="White"
-                                    FontWeight="Bold"
-                                    FontSize="20"
-                                    BorderBrush="#FF0E262F"
-                                    BorderThickness="2">
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding DeleteRowCommand}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <Button.Template>
-
-                                    <ControlTemplate TargetType="Button">
-                                        <Border x:Name="border" 
-                                                Background="#156082"
-                                                CornerRadius="5" 
-                                                BorderThickness="2"
-                                            BorderBrush="Black"
-                                            >
-                                            <ContentPresenter   HorizontalAlignment="Center" 
-                                                                VerticalAlignment="Center"/>
-                                        </Border>
-
-                                        <ControlTemplate.Triggers>
-                                            <!-- Hover -->
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#357ABD"/>
-                                            </Trigger>
-
-                                            <!-- Pressed -->
-                                            <Trigger Property="IsPressed" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#2C6A9F"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Button.Template>
-
-
+                                
                             </Button>
-
-                            <Button Content="UPDATE"                  
-                                                   
-                                    Width="130"
-                                    Height="35"                      
-                                    Background="#156082"                       
-                                    Foreground="White"                      
-                                    FontWeight="Bold"                      
-                                    FontSize="20"                      
-                                    BorderBrush="#0D3F52"
-                                    BorderThickness="2">
+                            <Button Content="UPDATE"    
+                                    Style="{StaticResource UpdateButtonStyle}"            
+                                    >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding UpdateCommand}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <Button.Template>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border x:Name="border" 
-                                                Background="#156082"
-                                                CornerRadius="5" 
-                                                BorderThickness="2"
-                                                BorderBrush="Black">
-                                            <ContentPresenter    HorizontalAlignment="Center" 
-                                
-                                                                 VerticalAlignment="Center"/>
-                                        </Border>
-
-                                        <ControlTemplate.Triggers>
-                                            <!-- Hover -->
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#357ABD"/>
-                                            </Trigger>
-
-                                            <!-- Pressed -->
-                                            <Trigger Property="IsPressed" Value="True">
-                                                <Setter TargetName="border" Property="Background" Value="#2C6A9F"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Button.Template>
                             </Button>
                         </StackPanel>
                     </Border>
