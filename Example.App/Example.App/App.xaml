@@ -6,14 +6,9 @@
     <prism:PrismApplication.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="pack://application:,,,/Example.App.Modules.Infrastructure;component/Converters/Resources.xaml" />-->
-                <!--<ResourceDictionary Source="pack://application:,,,/Code.App.Modules.Infrastructure;component/Converters/StringResources.vi.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Code.App.Modules.Infrastructure;component/Converters/StringResources.en.xaml" />-->
-
+                <ResourceDictionary Source="\Resource\DataGridStyles.xaml"/>
+                <ResourceDictionary Source="\Resource\ValueConverters.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </prism:PrismApplication.Resources>
-
-
-
 </prism:PrismApplication>

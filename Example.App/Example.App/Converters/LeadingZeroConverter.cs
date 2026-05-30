@@ -34,6 +34,7 @@ namespace Example.App.Convnerters
                 return number.ToString();
             }
             return value?.ToString() ?? "";
+
         }
     }
 }
