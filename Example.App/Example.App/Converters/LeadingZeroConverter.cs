@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace Example.App.Convnerters
+namespace Example.App.Converters
 {
     public class LeadingZeroConverter : IValueConverter
     {

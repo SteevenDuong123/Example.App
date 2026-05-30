@@ -49,6 +49,7 @@ namespace Example.App.ViewModels
 
         public ObservableCollection<Product> Products { get; private set; } = [];
         public ObservableCollection<Product> FilteredProducts { get; private set; } = [];
+        //public ObservableCollection<Product> DeletedProducts { get; private set; } = [];    
 
         private readonly string _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Products.txt");
 
@@ -143,9 +144,9 @@ namespace Example.App.ViewModels
         private void CreateSampleDataFile()
         {
             var sample = @"Code|Name|UnitPrice|Quantity|IsActive
-                        00002|Product 2|20000000|20|False
-                        00001|Product 1|10000000|10|True
-                        00003|Product 3|15000000|15|True";
+                            00002|Product 2|20000000|20|False
+                            00001|Product 1|10000000|10|True
+                            00003|Product 3|15000000|15|True";
             File.WriteAllText(_filePath, sample);
         }
 

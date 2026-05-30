@@ -9,7 +9,7 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         Title="{Binding Title}" SizeToContent="WidthAndHeight" MaxWidth="1200" MaxHeight="600"
-        xmlns:conv="clr-namespace:Example.App.Convnerters"
+      
         >
     <Grid Margin="20">
         <Border BorderBrush="Black" BorderThickness="1" Background="#FFCEF4F4" Padding="5
